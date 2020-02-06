@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaBattleNet } from 'react-icons/fa';
 
 export const Header = () => { 
   const x = 1;
@@ -12,7 +13,9 @@ export const Header = () => {
       <div className="settings">
         <ul>
           <li>+</li>
-          <li>Nav item</li>
+          <li>
+            <FaBattleNet />
+          </li>
         </ul>
       </div>
     </nav>
