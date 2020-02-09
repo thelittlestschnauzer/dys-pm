@@ -23,7 +23,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: #2D3A42;
   background-color: #EBEBEB;
-  font-smooth: always;
   -webkit-font-smoothing: antialised;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -105,6 +104,11 @@ $generic-bg: #27A09E;
   margin: 2px 5px;
 }
 
+@mixin transparent-button() {
+  background-color: transparent;
+  border: 0;
+}
+
 @mixin task-item() {
   list-style-type: none;
   display: flex;
@@ -157,9 +161,8 @@ header {
   @include mq('900px') {
     padding: 0 10px;
   }
-}
 
-// navbar 
+// navbar within header
 
 nav {
   display: grid;
@@ -184,6 +187,7 @@ nav {
       grid-area: 1 / 1;
 
     svg {
+      width: 24px;
       color: #fff;
     }
   }
@@ -215,16 +219,34 @@ nav {
         &.settings__add {
           margin-right: 15px;
           font-size: 30px;
+
+          button {
+            @include transparent-button();
+            color: #fff;
+            cursor: pointer;
+          }
         }
 
-        &.settings__dark-mode svg {
-          width: 20px;
-          height: 20px;
+          &.settings__dark-mode {
+            button {
+              @include transparent-button();
+              color: #fff;
+              cursor: pointer;
+              display: flex;
+            
+              svg {
+                width: 20px;
+                height: 20px;
+              }
+            }
+
+          }
         }
       }
     }
   }
 }
+
 
 
 // sidebar
@@ -245,42 +267,31 @@ nav {
   }
 
   li {
+    padding-left: 15px;
+    padding-right: 15px;
+
     &:hover .sidebar__project-delete {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
+      display: block;
     }
   }
 
   &__project {
+    padding: 5px 0;
     cursor: pointer;
-
-    div:nth-child(1) {
-      padding: 5px 0;
-      padding-left: 10px;
-      padding-right: 15px;
-      width: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-    }
 
     &-delete {
       margin-left: auto;
       display: none;
 
       svg {
-        color: #D3F5CE;
+        color: #af38eb;
       }
     }
-
-    &.active, &:hover {
-      font-weight: bold;
-      background-color: #fff;
-    }
+    
+      &.active, &:hover {
+        font-weight: bold;
+        background-color: #fff;
+      }
 
       &:nth-child(1) {
         .sidebar__dot {
@@ -309,6 +320,7 @@ nav {
       }
     }
 
+      
     &__projects {
       padding-left: 3px;
     }
@@ -325,69 +337,44 @@ nav {
     &__middle {
       margin-top: 20px;
       margin-bottom: 20px;
-      display: -webkit-box;
-      display: -ms-flexbox;
       display: flex;
       border-bottom: $generic-border;
       padding-left: 10px;
-      cursor: pointer;
+      cursor: pointer; 
 
       span {
-        color: #3A4555;
-        margin-right: 10px;
+        margin-right: 15px;
+        color: #27A09E;
 
         svg.hidden-projects {
-          -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
         }
       }
 
       h2 {
         margin: 0;
-        color: #555;
-        font-size: 15px;
-        font-weight: bold;
+        color: #3A4555;
+        font-size: 18px;
         padding-bottom: 20px;
       }
     }
+  
 
     &__generic {
-      li {
+      li{
+        padding: 10px 0 10px 10px;
         list-style-type: none;
         color: #07D1BF;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         cursor: pointer;
-        line-height: 1.50;
+        line-height: 1.95;
         font-size: 15px;
-        padding-left: 10px;
+        padding-left: 15px;
         padding-right: 0;
-
-        div:nth-child(1) {
-          display: -webkit-box;
-          display: -ms-flexbox;
-          display: flex;
-          padding: 10px 0 10px 10px;
-          width: 100%;
         
-          span:first-of-type {
-            margin-right: 10px;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            
-            svg {
-              width: 20px;
-              height: 20px;
-              color: #555;
-            }
-          }
+        span:first-of-type {
+          margin-right: 10px;
         }
-
         &.active, &:hover {
           font-weight: bold;
           background-color: #fff;
@@ -395,6 +382,8 @@ nav {
       }
     }
   }
+
+  
 
 
 
