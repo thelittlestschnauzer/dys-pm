@@ -36,7 +36,7 @@ return (
                 +
               </button>
             </li>
-          <li className="settings__dark-mode">
+          <li className="settings__darkmode">
             <button     
               data-testid="dark-mode-action" 
               aria-label="Darkmode on/off"
